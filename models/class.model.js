@@ -5,7 +5,7 @@ const classSchema = mongoose.Schema({
   class_text: { type: String, required: true },
   class_num: { type: Number, required: true },
   attendee: { type: mongoose.Schema.ObjectId, ref: "Teacher" },
-  createAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: new Date() },
 });
 
 module.exports = mongoose.model("Class", classSchema);
