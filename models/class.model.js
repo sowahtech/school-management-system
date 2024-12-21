@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const classSchema = mongoose.Schema({
   school: { type: mongoose.Schema.ObjectId, ref: "School" },
-  class_test: { type: String, required: true },
+  class_text: { type: String, required: true },
   class_num: { type: Number, required: true },
   attendee: { type: mongoose.Schema.ObjectId, ref: "Teacher" },
   createAt: { type: Date, default: new Date() },
