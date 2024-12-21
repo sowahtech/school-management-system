@@ -6,7 +6,7 @@ const schoolSchema = new mongoose.Schema({
   owner_name: { type: String, required: true },
   school_image: { type: String, required: true },
   password: { type: String, required: true },
-  createAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: new Date() },
 });
 
 module.exports = mongoose.model("School", schoolSchema);
