@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const uri = process.env.MONGODB_URI;
 const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT;
@@ -17,7 +18,7 @@ app.get("/test", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://localhost:27017/schoolManagement2024")
+  .connect(uri)
   .then((db) => {
     console.log("MongoDb is connected successfully.");
   })
