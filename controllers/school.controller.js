@@ -6,6 +6,7 @@ const formidable = require("formidable");
 const path = require("path");
 const fs = require("fs");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const School = require("../models/school.model.js");
 
@@ -44,6 +45,54 @@ module.exports = {
       res
         .status(500)
         .json({ success: false, message: "School Registration Failed" });
+    }
+  },
+
+  loginSchool: async (req, res) => {
+    try {
+      const school = await School.findOne({ email: req.body.email });
+      if (school) {
+        const isAuth = bcrypt.compareSync(req.body.password, school.password);
+        if (isAuth) {
+          const jwtSecret = process.env.JWT_SECRET;
+          const token = jwt.sign(
+            {
+              id: school._id,
+              schoolId: school._id,
+              owner_name: school.owner_name,
+              school_name: school.school_name,
+              image_url: school.school_image,
+              role: "SCHOOL",
+            },
+            jwtSecret
+          );
+          res.header("Authorization", token);
+          res.status(200).json({
+            success: true,
+            message: "Successful Login",
+            user: {
+              id: school._id,
+              owner_name: school.owner_name,
+              school_name: school.school_name,
+              image_url: school.school_image,
+              role: "SCHOOL",
+            },
+          });
+        } else {
+          res
+            .status(401)
+            .json({ success: false, message: "Password is incorrect" });
+        }
+      } else {
+        res
+          .status(401)
+          .json({ success: false, message: "Email is not registered" });
+      }
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error [SCHOOL LOGIN]",
+      });
     }
   },
 };
