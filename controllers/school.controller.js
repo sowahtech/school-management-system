@@ -125,7 +125,7 @@ module.exports = {
       if (school) {
         res.status(200).json({ success: true, school });
       } else {
-        res.status(500).json({
+        res.status(404).json({
           success: false,
           message: "school not found.",
         });
