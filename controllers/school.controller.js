@@ -117,4 +117,24 @@ module.exports = {
       });
     }
   },
+
+  getSchoolOwnData: async (req, res) => {
+    try {
+      const id = "";
+      const school = await School.findOne({ _id: id });
+      if (school) {
+        res.status(200).json({ success: true, school });
+      } else {
+        res.status(500).json({
+          success: false,
+          message: "school not found.",
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error [ OWN SCHOOL DATA ].",
+      });
+    }
+  },
 };
