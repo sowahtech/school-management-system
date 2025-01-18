@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "es2016",  // Target ECMAScript 7 (ES2016)
+      "module": "commonjs",  // Specify module system as CommonJS
+      "allowSyntheticDefaultImports": true,  // Allow default imports from modules without default export
+      "experimentalDecorators": true,  // Enable support for decorators (ES7 feature)
+      "baseUrl": ".",  // Base directory for resolving non-relative module names
+      "paths": {
+        "@/*": ["src/*"]  // Alias @ to src folder
+      }
+    },
+    "include": [
+      "src/**/*"  // Include all files in the src folder
+    ],
+    "exclude": [
+      "node_modules",  // Exclude the node_modules folder
+      "dist"  // Exclude the dist folder for output builds
+    ]
+  }
+  
