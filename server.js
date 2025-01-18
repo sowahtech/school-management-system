@@ -7,15 +7,13 @@ const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT;
 
+// ROUTERS IMPORT
+const schoolRouter = require("./routers/school.routes.js");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
-
-app.get("/test", (req, res) => {
-  res.send({ id: 1, message: "app working fine" });
-});
 
 mongoose
   .connect(uri)
@@ -25,7 +23,7 @@ mongoose
   .catch((e) => {
     console.log("MongoDb error", e);
   });
-
+app.use("/api/school", schoolRouter);
 app.listen(PORT, () => {
   console.log("Server is running on PORT=>", PORT);
 });
