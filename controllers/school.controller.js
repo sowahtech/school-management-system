@@ -137,4 +137,55 @@ module.exports = {
       });
     }
   },
+
+  updateSchool: async (req, res) => {
+    try {
+      const id = "";
+      const form = new formidable.IncomingForm();
+      form.parse(req, async (err, fields, files) => {
+        const school = await School.findOne({ _id: id });
+        if (files.image) {
+          const photo = files.image[0];
+          let filepath = photo.filepath;
+          let originalFilename = photo.originalFilename.replace(" ", "_");
+          if (school.school_image) {
+            let oldImagePath = path.join(
+              __dirname,
+              process.env.SCHOOL_IMAGE_PATH,
+              school.school_image
+            );
+            if (fs.existsSync(oldImagePath)) {
+              fs.unlink(oldImagePath, (err) => {
+                if (err) {
+                  console.log(err);
+                }
+              });
+            }
+          }
+        }
+
+        let newPath = path.join(
+          __dirname,
+          process.env.SCHOOL_IMAGE_PATH,
+          originalFilename
+        );
+        let photoData = fs.readFileSync(filepath);
+        fs.writeFileSync(newPath, photoData);
+
+        Object.keys(fields).forEach((field) => {
+          school[field] = fields[field][0];
+        });
+        await school.save();
+        res.status(200).json({
+          success: true,
+          message: "School Updated successfully",
+          school,
+        });
+      });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ success: false, message: "Updating school Failed" });
+    }
+  },
 };
