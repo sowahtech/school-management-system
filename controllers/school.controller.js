@@ -1,5 +1,4 @@
 // CRUD applications - CREATE, READ, UPDATE AND DELETE
-import IncomingForm from "./../node_modules/formidable/src/Formidable";
 // AUTHENTICATION - SCHOOL, STUDENT AND TEACHER
 
 const formidable = require("formidable");
