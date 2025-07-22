@@ -10,7 +10,9 @@ import {Navbar,
         Title, 
         LoremTextContainer, 
         AdminRegisterLink
-    } from '../styles/styles'
+} from '../styles/styles'
+
+import {LoremIpsum} from 'lorem-ipsum'
 
 const Home = () => {
   return (
