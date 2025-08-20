@@ -1,21 +1,22 @@
 import {
-  AdminRegisterContainer,
+  AdminSignInContainer,
   FormContainer,
   InputField,
   SubmitButton,
-} from "../styles/AdminRegisterStyles";
+} from "../styles/AdminSignInStyles";
+import { useState } from "react";
 
-const AdminRegister = () => {
+const AdminSignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = () => {
+  const handleSignIn = () => {
     // lets simply just log the registration data
-    console.log("Admin registration", { email, password });
+    console.log("Admin Sign In", { email, password });
   };
   return (
-    <AdminRegisterContainer>
-      <h2>Admin Register</h2>
+    <AdminSignInContainer>
+      <h2>Admin Sign In</h2>
       <FormContainer>
         <InputField
           type="email"
@@ -31,12 +32,12 @@ const AdminRegister = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <SubmitButton type="button" onClick={handleRegister}>
+        <SubmitButton to="/admin/dashboard" onClick={handleSignIn}>
           Register
         </SubmitButton>
       </FormContainer>
-    </AdminRegisterContainer>
+    </AdminSignInContainer>
   );
 };
 
-export default AdminRegister;
+export default AdminSignIn;
