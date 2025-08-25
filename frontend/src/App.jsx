@@ -6,6 +6,20 @@ import AdminSignIn from "./components/AdminSignIn";
 import StudentSignIn from "./components/StudentSignin";
 import TeacherSignIn from "./components/TeacherSignin";
 import AdminDashboard from "./pages/Admin/Dashboard";
+
+import Announcement from "./pages/Admin/Announcement";
+import Assignments from "./pages/Admin/Assignments";
+import Attendance from "./pages/Admin/Attendance";
+import Classes from "./pages/Admin/Classes";
+import EventCalendar from "./pages/Admin/EventCalendar";
+import Exams from "./pages/Admin/Exams";
+import Library from "./pages/Admin/Library";
+import Performance from "./pages/Admin/Performance";
+import SettingsProfile from "./pages/Admin/SettingsProfile";
+import Sidebar from "./pages/Admin/Sidebar";
+import Students from "./pages/Admin/Students";
+import Teachers from "./pages/Admin/Teachers";
+
 function App() {
   return (
     <>
