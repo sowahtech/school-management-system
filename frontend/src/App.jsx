@@ -35,6 +35,24 @@ function App() {
 
           {/* All the dashboard Routes */}
           <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
+
+          {/* Admin sections here */}
+          <Route
+            exact
+            path="/admin/communications"
+            element={<Announcement />}
+          />
+          <Route exact path="/admin/assignments" element={<Assignments />} />
+          <Route exact path="/admin/attendance" element={<Attendance />} />
+          <Route exact path="/admin/classes" element={<Classes />} />
+          <Route exact path="/admin/events" element={<EventCalendar />} />
+          <Route exact path="/admin/exams" element={<Exams />} />
+          <Route exact path="/admin/library" element={<Library />} />
+          <Route exact path="/admin/performance" element={<Performance />} />
+          <Route exact path="/admin/settings" element={<SettingsProfile />} />
+          <Route exact path="/admin/sidebar" element={<Sidebar />} />
+          <Route exact path="/admin/students" element={<Students />} />
+          <Route exact path="/admin/teachers" element={<Teachers />} />
         </Routes>
       </Router>
     </>
