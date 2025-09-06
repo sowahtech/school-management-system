@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Performance = () => {
-  return <div>Performance</div>;
+  return <>Students Performance</>;
 };
 
 export default Performance;
