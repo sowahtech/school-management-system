@@ -18,6 +18,7 @@ import {
 const AdminDashboard = () => {
   return (
     <AdminDashboardContainer>
+      <Sidebar />
       <Content>
         <TopContent>
           <Section>
