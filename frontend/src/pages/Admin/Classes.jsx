@@ -15,9 +15,9 @@ import {
 
 const Classes = () => {
   return (
-    <ClassContainer>
+    <ClassContainer style={{ paddingLeft: 250 }}>
       <Sidebar />
-      <Content style={{ paddingLeft: 250 }}>
+      <Content>
         <ClassesContent>
           <ClassHeader>Classes</ClassHeader>
           <AddClassForm>
