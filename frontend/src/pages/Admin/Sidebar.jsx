@@ -29,7 +29,7 @@ export const SidebarContainer = styled.div`
   background-color: #2c3e50; /* Dark blue background */
   color: white;
   overflow-y: auto; /* Enable vertical scrolling */
-  padding-top: 20px;
+  padding-top: 10px;
   transition: width 0.3s ease; /* Smooth width transition */
   z-index: 100; /* Ensure sidebar stays above content */
 `;
