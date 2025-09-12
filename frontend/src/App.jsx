@@ -20,6 +20,15 @@ import Sidebar from "./pages/Admin/Sidebar";
 import Students from "./pages/Admin/Students";
 import Teachers from "./pages/Admin/Teachers";
 
+import StudentDashboard from "./pages/Students/Dashboard";
+import StudentAssignments from "./pages/Students/Assignments";
+import ExamSection from "./pages/Students/Exams";
+import PerformanceSection from "./pages/Students/Performance";
+import AttendanceSection from "./pages/Students/Attendance";
+import LibrarySection from "./pages/Students/Library";
+import AnnouncementSection from "./pages/Students/Announcements";
+import ProfileSection from "./pages/Students/Profile";
+
 function App() {
   return (
     <>
@@ -35,6 +44,11 @@ function App() {
 
           {/* All the dashboard Routes */}
           <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route
+            exact
+            path="/student/dashboard"
+            element={<StudentDashboard />}
+          />
 
           {/* Admin sections here */}
           <Route
@@ -53,6 +67,31 @@ function App() {
           <Route exact path="/admin/sidebar" element={<Sidebar />} />
           <Route exact path="/admin/students" element={<Students />} />
           <Route exact path="/admin/teachers" element={<Teachers />} />
+
+          {/* Student Sections */}
+          <Route
+            exact
+            path="/student/assignments"
+            element={<StudentAssignments />}
+          />
+          <Route exact path="/student/exams" element={<ExamSection />} />
+          <Route
+            exact
+            path="/student/performance"
+            element={<PerformanceSection />}
+          />
+          <Route
+            exact
+            path="/student/attendance"
+            element={<AttendanceSection />}
+          />
+          <Route exact path="/student/library" element={<LibrarySection />} />
+          <Route
+            exact
+            path="/student/communications"
+            element={<AnnouncementSection />}
+          />
+          <Route exact path="/student/settings" element={<ProfileSection />} />
         </Routes>
       </Router>
     </>
