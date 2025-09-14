@@ -16,14 +16,14 @@ import {
 import { BsBorderWidth } from "react-icons/bs";
 const ExamSection = () => {
   // sample exam results data
-  const examResulstData = {
+  const examResultsData = {
     subjects: ["Math", "Science", "English", "History"],
     results: [80, 75, 90, 85],
   };
 
   // bar chart data
   const barChartData = {
-    labels: examResulstData.subjects,
+    labels: examResultsData.subjects,
     datasets: [
       {
         labels: "Exam Results",
@@ -32,7 +32,7 @@ const ExamSection = () => {
         borderWidth: "1",
         hoverBackgroundColor: "#005663",
         hoverBorderColor: "#2056b3",
-        data: examResulstData.results,
+        data: examResultsData.results,
       },
     ],
   };
@@ -54,10 +54,10 @@ const ExamSection = () => {
       </SidebarContainer>
       <ExamHeader>Exam Results</ExamHeader>
       <ExamResultsContainer>
-        {examResulstData.subjects.map((subject, index) => (
+        {examResultsData.subjects.map((subject, index) => (
           <div key={index}>
             <ExamSubject>{subject}</ExamSubject>
-            <ExamResult>Score: {examResulstData.results[index]}</ExamResult>
+            <ExamResult>Score: {examResultsData.results[index]}</ExamResult>
           </div>
         ))}
         <ExamChartContainer>
