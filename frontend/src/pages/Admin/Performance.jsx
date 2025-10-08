@@ -10,6 +10,7 @@ import {
   SchoolPerformance,
   IndividualPerformance,
 } from "../../styles/PerformanceStyles";
+
 const Performance = () => {
   const schoolPerformanceData = {
     averageScore: 86,
