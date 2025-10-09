@@ -20,7 +20,11 @@ export const createStudent = async(req, res, next) =>{
 export const getAllStudents = async(req, res, next) =>{
     try {
         const students = await Student.find()
-    } catch (error) {
-        
+        res.status(200).json({
+            success: true,
+            students
+        })
+    } catch (err) {
+        next(err)
     }
 }
