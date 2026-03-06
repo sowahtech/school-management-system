@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import studentRouter from "./routers/studentRouter.js"
+import eventsRouter from "./routers/eventsRouter.js"
 import { dbConnection } from "./database/dbConnecion.js"
 
 const app = express()
@@ -13,6 +14,7 @@ dotenv.config();
 
 
 app.use('/api/vt/students', studentRouter)
+app.use('/api/vt/events', eventsRouter)
 
 dbConnection()
 
