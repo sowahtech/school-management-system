@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
-export const dbConnection = () => {
-    mongoose.connect(process.env.MONGO_URL, {
-        dbName : "School_Management_System"
+export const dbConnection = async() => {
+    await mongoose.connect(process.env.MONGO_URI, { family : 4}, {
+        dbName : "SchoolMS"
     }).then(
         console.log("connected to database successfully")
     ).catch((error) =>{
