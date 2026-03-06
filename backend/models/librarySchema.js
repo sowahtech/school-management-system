@@ -13,4 +13,4 @@ const librarySchema = new mongoose.Schema({
     },
 })
 
-export const Library = mongoose.model('Library', librarySchema)
+export const Book = mongoose.model('Library', librarySchema)
