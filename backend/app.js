@@ -8,6 +8,7 @@ import announcementRouter from "./routers/announcementRouter.js"
 import assignmentRouter from "./routers/assignmentRouter.js"
 import attendanceRouter from "./routers/attendanceRouter.js"
 import classRouter from "./routers/classRouter.js"
+import examRouter from "./routers/examRouter.js"
 import { dbConnection } from "./database/dbConnecion.js"
 
 const app = express()
@@ -25,6 +26,7 @@ app.use('/api/vt/announcement', announcementRouter)
 app.use('/api/vt/assignment', assignmentRouter)
 app.use('/api/vt/attendance', attendanceRouter)
 app.use('/api/vt/class', classRouter)
+app.use('/api/vt/exams', examRouter)
 
 dbConnection()
 
