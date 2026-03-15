@@ -1,0 +1,17 @@
+import mongoose from 'mongoose'
+
+const attendanceSchema = new mongoose.Schema({
+    Student : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Student",
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ["Present", "Absent", "Absent with Apology"],
+        required: true
+    },
+
+})
+
+export const Attendance = mongoose.model('Attendance', attendanceSchema)
