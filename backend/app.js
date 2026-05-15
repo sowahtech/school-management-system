@@ -28,7 +28,7 @@ app.use('/api/vt/assignment', assignmentRouter)
 app.use('/api/vt/attendance', attendanceRouter)
 app.use('/api/vt/class', classRouter)
 app.use('/api/vt/exams', examRouter)
-app.use('/api/vt/teacher', teacherRouter)s
+app.use('/api/vt/teacher', teacherRouter)
 
 dbConnection()
 
