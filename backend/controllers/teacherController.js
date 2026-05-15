@@ -9,7 +9,7 @@ export const createTeacher = async(req, res, next) =>{
         if(!name || !email || !subject){
             handleValidationError("Please fill out the full form", 400)
         }
-        await Teachers.create({name, registrationNumber, grade})
+        await Teachers.create({name, email, subject})
         res.status(200).json({
             success: true,
             message: "Teacher is created"
