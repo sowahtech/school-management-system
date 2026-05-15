@@ -11,12 +11,21 @@ import classRouter from "./routers/classRouter.js"
 import examRouter from "./routers/examRouter.js"
 import teacherRouter from "./routers/teacherRouter.js"
 import { dbConnection } from "./database/dbConnecion.js"
+import { errorHandler } from "./middlewares/errorHandler.js"
 
 const app = express()
 // config({path: './config/config.env'})
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors());
+app.use(cors({
+    origin: [process.env.FRONTEND_URL],
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}));
+
+app.use((err, req, res, next) => {
+    errorHandler(err, req, res, next)
+})
+
 dotenv.config();
 
 
