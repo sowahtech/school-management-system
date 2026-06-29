@@ -15,22 +15,59 @@ import {
 } from "../../styles/TeachersStyles";
 
 const Teachers = () => {
+
+  const [newTeacher, setNewTeacher] = useState({ name: '', email: '', subject: '' })
+  const [teachers, setTeachers] = useState([])
+
+  useEffect(() => {
+    fetchTeachers();
+  }, [])
+
+  const fetchTeachers = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/api/vt/teachers/getall")
+      setTeachers(response.data.teachers)
+    } catch (error) {
+      console.error('Error fetching teachers', error)
+    }
+  }
+
+  const handleAddTeacher = async (e) => {
+    e.preventDefault();
+    if (newTeacher.name.trim() !== '' && newTeacher.email.trim() !== '' && newTeacher.subject.trim() !== '') {
+      try {
+        const response = await axios.post('http://localhost:4000/api/vt/teachers/create', newTeacher)
+        console.log('Response data: ', response.data) // this will log the response data
+        const createdTeacher = response.data.teachers
+        setTeachers([...teachers, createdTeacher])
+        setNewTeacher({ name: '', email: '', subject: '' })
+      } catch (error) {
+        console.error('Error adding teacher: ', error)
+      }
+    }
+  }
+
   return (
     <TeachersContainer>
       <Sidebar />
       <Content>
         <TeachersContent>
           <TeachersHeader>
-            <AddTeacherForm>
-              <AddTeacherInput type="text" placeholder="Enter Teacher Name" />
-              <AddTeacherInput type="email" placeholder="Enter Teacher Email" />
+            <AddTeacherForm onSubmit={handleAddTeacher}>
+              <AddTeacherInput type="text" placeholder="Enter Teacher Name" value={newTeacher.name} onChange={(e) => setNewTeacher({ ...newTeacher, name: e.target.value })} />
+              <AddTeacherInput type="email" placeholder="Enter Teacher Email" value={newTeacher.email} onChange={(e) => setNewTeacher({ ...newTeacher, email: e.target.value })} />
               <AddTeacherInput
                 type="text"
                 placeholder="Enter Teacher Subject"
+                value={newTeacher.subject} onChange={(e) => setNewTeacher({ ...newTeacher, subject: e.target.value })}
               />
               <AddTeacherButton type="submit">Add Teacher</AddTeacherButton>
             </AddTeacherForm>
-            <TeacherList></TeacherList>
+            <TeacherList>
+              {teachers.map((teacher) => {
+                <TeacherItem key={teacher.id}>{teacher.name} - {teacher.email} - {teacher.subject}</TeacherItem>
+              })}
+            </TeacherList>
           </TeachersHeader>
         </TeachersContent>
       </Content>
