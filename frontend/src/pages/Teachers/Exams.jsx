@@ -40,7 +40,7 @@ const CheckExamSection = () => {
 
   const handleAddExam = async (e) => {
     e.preventDefault();
-    const newExam = [name, registrationNumber, className, marks = parseInt(marks)]
+    let newExam = [name, registrationNumber, className, marks = parseInt(marks)]
     try {
       const response = await axios.post('http://localhost:4000/api/vt/exams/create', newExam)
       console.log('Response data: ', response.data) // this will log the response data
