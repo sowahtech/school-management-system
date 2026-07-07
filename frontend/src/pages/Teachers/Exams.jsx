@@ -14,13 +14,58 @@ import {
 } from "../../styles/ExamStyles";
 
 const CheckExamSection = () => {
-  const calculateTotalMarks = () => {
-    let total = 0;
-    for (i = 0, i < examData.length; i++; ) {
-      total = examData[i].marks;
+
+  const [examData, setExamData] = useState([])
+  const [name, setName] = useState('')
+  const [registrationNumber, setRegistrationNumber] = useState('')
+  const [className, setClassName] = useState('')
+  const [marks, setMark] = useState('')
+
+  useEffect(() => {
+    fetchExams();
+  }, [])
+
+  const fetchExams = async () => {
+    try {
+      const response = await axios.get("http://localhost:4000/api/vt/exams/getall")
+      if (Array.isArray(response.data.classes)) {
+        setExamData(response.data)
+      } else {
+        setExamData(response.data)
+      }
+    } catch (error) {
+      console.error('Error fetching exams', error)
     }
-    return total;
-  };
+  }
+
+  const handleAddExam = async (e) => {
+    e.preventDefault();
+    const newExam = [name, registrationNumber, className, marks = parseInt(marks)]
+    try {
+      const response = await axios.post('http://localhost:4000/api/vt/exams/create', newExam)
+      console.log('Response data: ', response.data) // this will log the response data
+      if (typeof response.data === 'object') {
+        setExamData([...examData, response.data])
+        setName('')
+        setRegistrationNumber('')
+        setClassName('')
+        setMarks('')
+      } else {
+        console.error('Error: API response data is not an object')
+      }
+    } catch (error) {
+      console.error('Error adding Exam: ', error)
+    }
+
+  }
+
+  // const calculateTotalMarks = () => {
+  //   let total = 0;
+  //   for (i = 0, i < examData.length; i++; ) {
+  //     total = examData[i].marks;
+  //   }
+  //   return total;
+  // };
   return (
     <ExamContainer>
       <SidebarContainer>
